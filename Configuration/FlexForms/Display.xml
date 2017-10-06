@@ -1,0 +1,29 @@
+<T3DataStructure>
+    <meta>
+        <langDisable>1</langDisable>
+    </meta>
+    <sheets>
+
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>LLL:EXT:ew_socialfeedwall/Resources/Private/Language/locallang_be.xlf:display_flexform.sheet_general</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.searchOverride>
+                        <TCEforms>
+                            <label>LLL:EXT:ew_socialfeedwall/Resources/Private/Language/locallang_be.xlf:display_flexform.settings.searchOverride</label>
+                            <config>
+                                <max>256</max>
+                                <size>50</size>
+                                <type>input</type>
+                            </config>
+                        </TCEforms>
+                    </settings.searchOverride>
+                </el>
+            </ROOT>
+        </sDEF>
+
+    </sheets>
+</T3DataStructure>

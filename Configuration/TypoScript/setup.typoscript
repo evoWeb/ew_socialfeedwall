@@ -1,0 +1,38 @@
+plugin.tx_ewsocialfeedwall {
+  settings {
+    search = {$plugin.tx_ewsocialfeedwall.settings.search}
+  }
+
+  view {
+    cssFiles {
+      tweetList = EXT:ew_socialfeedwall/Resources/Public/Stylesheets/TweetList.css
+    }
+    jsFooterFiles {
+      tweetList = EXT:ew_socialfeedwall/Resources/Public/JavaScripts/TweetList.js
+    }
+    jsFooterLibraries {
+      angular = //cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.18/angular.min.js
+      angular-resource = //cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.18/angular-resource.min.js
+      angular-sanitize = //cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.18/angular-sanitize.min.js
+      moment = //cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js
+    }
+  }
+}
+
+// PAGE object for Ajax call:
+ajaxselectlist_page = PAGE
+ajaxselectlist_page {
+  typeNum = 1507271557071
+
+  config {
+    disableAllHeaderCode = 1
+    additionalHeaders = Content-type:application/json
+    xhtml_cleaning = 0
+    debug = 0
+    no_cache = 1
+    admPanel = 0
+  }
+
+  10 < tt_content.list.20.ewsocialfeedwall_display
+  10.switchableControllerActions.Display.1 = getTweets
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-06-23T05:48:33Z" product-name="sessionplaner">
+		<header/>
+		<body>
+			<trans-unit id="tt_content.list_type_display" xml:space="preserve">
+				<source>Social feed wall</source>
+			</trans-unit>
+			<trans-unit id="display_flexform.sheet_general" xml:space="preserve">
+				<source>Configuration</source>
+			</trans-unit>
+			<trans-unit id="display_flexform.settings.searchOverride" xml:space="preserve">
+				<source>Override search term (used if not empty)</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,19 @@
+<?php
+defined('TYPO3_MODE') || die('Access denied.');
+
+/**
+ * Frontend Plugin Session
+ */
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+    'Evoweb.EwSocialfeedwall',
+    'Display',
+    'LLL:EXT:ew_socialfeedwall/Resources/Private/Language/locallang_be.xlf:tt_content.list_type_display',
+    'EXT:ew_socialfeedwall/ext_icon.svg'
+);
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['ewsocialfeedwall_display'] =
+    'layout, select_key, pages, recursive';
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['ewsocialfeedwall_display'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
+    'ewsocialfeedwall_display',
+    'FILE:EXT:ew_socialfeedwall/Configuration/FlexForms/Display.xml'
+);

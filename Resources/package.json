@@ -1,0 +1,27 @@
+{
+  "name": "evoweb-ewsocialfeedwall",
+  "version": "0.0.1",
+  "private": true,
+
+  "dependencies": {
+  },
+
+  "devDependencies": {
+    "node-sass": "latest",
+    "csslint": "latest",
+    "jshint": "latest",
+    "uglify-js": "latest"
+  },
+
+  "scripts": {
+    "node-sass": "node-sass --output-style compressed Private/Scss/TweetList.scss Public/Stylesheets/TweetList.min.css",
+    "build:css": "npm run node-sass",
+
+    "node-sass:dev": "node-sass --output-style expanded Private/Scss/TweetList.scss Public/Stylesheets/TweetList.css",
+    "csslint": "csslint --quiet Public/Stylesheets/TweetList.css",
+    "build:dev:css": "npm run node-sass:dev",
+
+    "build:dev": "npm run build:dev:css",
+    "build": "npm run build:dev:css && npm run build:css"
+  }
+}
