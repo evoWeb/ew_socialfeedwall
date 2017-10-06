@@ -50,6 +50,6 @@ class DisplayController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
     public function getTweetsAction()
     {
-        $a = '';
+        #use \Abraham\TwitterOAuth\TwitterOAuth;
     }
 }

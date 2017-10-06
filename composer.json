@@ -13,7 +13,8 @@
 	],
 
 	"require": {
-		"typo3/cms": ">=8.7.0"
+		"typo3/cms": ">=8.7.0",
+		"abraham/twitteroauth": "0.7.4"
 	},
 
 	"autoload": {
