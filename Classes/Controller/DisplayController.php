@@ -1,7 +1,6 @@
 <?php
 namespace Evoweb\EwSocialfeedwall\Controller;
 
-use Evoweb\EwSocialfeedwall\Utility\Configuration;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
@@ -9,9 +8,7 @@ class DisplayController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 {
     protected function initializeAction()
     {
-        /** @var Configuration $configuration */
-        $configuration = $this->objectManager->get(Configuration::class);
-        $this->settings = $configuration->mergeSettings($this->settings);
+        $this->settings = \Evoweb\EwSocialfeedwall\Utility\Configuration::mergeSettings($this->settings);
 
         $this->addResources();
     }
