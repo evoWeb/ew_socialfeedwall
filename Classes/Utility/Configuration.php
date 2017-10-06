@@ -1,8 +1,36 @@
 <?php
 namespace Evoweb\EwSocialfeedwall\Utility;
 
+/**
+ * Class Configuration
+ *
+ * Supported are
+ *
+ * TypoScript setup:
+ * plugin.extension {
+ *  settings {
+ *   key1 = value2a
+ *   key2 {
+ *    subKey2 = value3a
+ *   }
+ *  }
+ * }
+ *
+ * Override in Flexform:
+ * settings.key1Override = value2b
+ * settings.key2.subKey2Override = value3b
+ *
+ * Fallback in extension configuration:
+ * key1 = value2
+ * key2.subKey2 = value3
+ */
 class Configuration
 {
+    /**
+     * @var string
+     */
+    protected static $extensionKey = 'ew_socialfeedwall';
+
     /**
      * @param array $settings
      * @param array|null $configuration
@@ -11,8 +39,10 @@ class Configuration
      */
     public static function mergeSettings(array $settings, $configuration = null)
     {
-        if (is_null($configuration)) {
-            $configuration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['ew_socialfeedwall']);
+        if (is_null($configuration) && isset($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][self::$extensionKey])) {
+            $configuration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][self::$extensionKey]);
+        } else {
+            $configuration = [];
         }
 
         // iterate over the array
