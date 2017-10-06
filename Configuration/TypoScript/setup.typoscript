@@ -1,6 +1,13 @@
 plugin.tx_ewsocialfeedwall {
   settings {
     search = {$plugin.tx_ewsocialfeedwall.settings.search}
+
+    twitter {
+      consumer_key = {$plugin.tx_ewsocialfeedwall.settings.twitter.consumer_key}
+      consumer_secret = {$plugin.tx_ewsocialfeedwall.settings.twitter.consumer_secret}
+      access_token = {$plugin.tx_ewsocialfeedwall.settings.twitter.access_token}
+      access_token_secret = {$plugin.tx_ewsocialfeedwall.settings.twitter.access_token_secret}
+    }
   }
 
   view {

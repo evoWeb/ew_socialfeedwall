@@ -16,11 +16,46 @@
                             <label>LLL:EXT:ew_socialfeedwall/Resources/Private/Language/locallang_be.xlf:display_flexform.settings.searchOverride</label>
                             <config>
                                 <max>256</max>
-                                <size>50</size>
                                 <type>input</type>
                             </config>
                         </TCEforms>
                     </settings.searchOverride>
+                    <settings.twitter.consumer_keyOverride>
+                        <TCEforms>
+                            <label>LLL:EXT:ew_socialfeedwall/Resources/Private/Language/locallang_be.xlf:display_flexform.settings.twitter.consumer_keyOverride</label>
+                            <config>
+                                <max>25</max>
+                                <type>input</type>
+                            </config>
+                        </TCEforms>
+                    </settings.twitter.consumer_keyOverride>
+                    <settings.twitter.consumer_secretOverride>
+                        <TCEforms>
+                            <label>LLL:EXT:ew_socialfeedwall/Resources/Private/Language/locallang_be.xlf:display_flexform.settings.twitter.consumer_secretOverride</label>
+                            <config>
+                                <max>50</max>
+                                <type>input</type>
+                            </config>
+                        </TCEforms>
+                    </settings.twitter.consumer_secretOverride>
+                    <settings.twitter.access_tokenOverride>
+                        <TCEforms>
+                            <label>LLL:EXT:ew_socialfeedwall/Resources/Private/Language/locallang_be.xlf:display_flexform.settings.twitter.access_tokenOverride</label>
+                            <config>
+                                <max>50</max>
+                                <type>input</type>
+                            </config>
+                        </TCEforms>
+                    </settings.twitter.access_tokenOverride>
+                    <settings.twitter.access_token_secretOverride>
+                        <TCEforms>
+                            <label>LLL:EXT:ew_socialfeedwall/Resources/Private/Language/locallang_be.xlf:display_flexform.settings.twitter.access_token_secretOverride</label>
+                            <config>
+                                <max>45</max>
+                                <type>input</type>
+                            </config>
+                        </TCEforms>
+                    </settings.twitter.access_token_secretOverride>
                 </el>
             </ROOT>
         </sDEF>

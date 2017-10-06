@@ -1,6 +1,7 @@
 <?php
 namespace Evoweb\EwSocialfeedwall\Controller;
 
+use Evoweb\EwSocialfeedwall\Utility\Configuration;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
@@ -8,9 +9,9 @@ class DisplayController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 {
     protected function initializeAction()
     {
-        if (isset($this->settings['searchOverride']) && !empty($this->settings['searchOverride'])) {
-            $this->settings['search'] = $this->settings['searchOverride'];
-        }
+        /** @var Configuration $configuration */
+        $configuration = $this->objectManager->get(Configuration::class);
+        $this->settings = $configuration->mergeSettings($this->settings);
 
         $this->addResources();
     }
