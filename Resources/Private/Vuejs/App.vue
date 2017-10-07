@@ -34,7 +34,7 @@
         },
 
         methods: {
-            getTweets: function () {
+            getTweets: function (paging) {
                 let self = this,
                     resourceUrl = '?type=1507271557071' +
                     '&tx_ewsocialfeedwall_display%5Bsearch%5D=' + encodeURIComponent(this.parameter);
@@ -44,13 +44,15 @@
                 }
 
                 // GET request using the resource
-                this.$http.get(resourceUrl, function (res) {
+                this.$http.get(resourceUrl).then(function (response) {
+                    let tweets = response.body;
+
                     if (paging === false) {
                         self.allTweets = [];
                     }
 
-                    for (let index = res.length - 1; index > -1; index--) {
-                        let tweet = res[index];
+                    for (let index = tweets.length - 1; index > -1; index--) {
+                        let tweet = tweets[index];
                         // if no tweet is stored or id is not the same as the first tweet in store
                         // this is to prevent storing last tweet in response equal to first tweet
                         if (self.allTweets.length === 0 || tweet.id !== self.allTweets[0].id) {
@@ -67,7 +69,7 @@
                     self.lineFour = self.allTweets.slice(12,15);
 
                     // for paging - https://dev.twitter.com/docs/working-with-timelines
-                    self.sinceId = res[0].id;
+                    self.sinceId = tweets[0].id;
 
                     // retry after amount of milli seconds
                     setTimeout(self.getMoreTweets, 60 * 1000);
@@ -80,7 +82,7 @@
 
             loadTweets: function () {
                 this.sinceId = false;
-                this.getTweets();
+                this.getTweets(false);
             }
         }
     }
