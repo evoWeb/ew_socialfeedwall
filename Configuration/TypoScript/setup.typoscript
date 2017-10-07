@@ -18,12 +18,6 @@ plugin.tx_ewsocialfeedwall {
     jsFooterFiles {
       tweetList = EXT:ew_socialfeedwall/Resources/Public/JavaScripts/TweetList.js
     }
-    jsFooterLibraries {
-      angular = //cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.18/angular.min.js
-      angular-resource = //cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.18/angular-resource.min.js
-      angular-sanitize = //cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.18/angular-sanitize.min.js
-      moment = //cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js
-    }
   }
 }
 
