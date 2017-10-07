@@ -1,25 +1,10 @@
 <template>
     <div class="tweet-list">
 
-        <div class="row clearfix">
-            <div is="tweets" :tweets="lineOne"></div>
-        </div>
-
-        <div class="row clearfix">
-            <div is="tweets" :tweets="lineTwo"></div>
-        </div>
-
-        <div class="row clearfix">
-            <div is="tweets" :tweets="lineThree"></div>
-        </div>
-
-        <div class="row clearfix">
-            <div is="tweets" :tweets="lineFour"></div>
-
-            <div class="three columns logo">
-                animated logo
-            </div>
-        </div>
+        <div is="tweets" :tweets="lineOne"></div>
+        <div is="tweets" :tweets="lineTwo"></div>
+        <div is="tweets" :tweets="lineThree"></div>
+        <div is="tweets" :tweets="lineFour"></div>
 
     </div>
 </template>
