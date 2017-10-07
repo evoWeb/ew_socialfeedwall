@@ -7911,20 +7911,27 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
     methods: {
         getTweets: function getTweets(paging) {
             var self = this,
+                parameter = {
+                type: 1507271557071,
+                tx_ewsocialfeedwall_display: {
+                    search: encodeURIComponent(this.parameter)
+                }
+            },
                 resourceUrl = '?type=1507271557071' + '&tx_ewsocialfeedwall_display%5Bsearch%5D=' + encodeURIComponent(this.parameter);
 
             if (this.sinceId) {
+                parameter.tx_ewsocialfeedwall_display.since_id = this.sinceId;
                 resourceUrl += '&tx_ewsocialfeedwall_display%5Bsince_id%5D=' + this.sinceId;
             }
 
             // GET request using the resource
-            this.$http.get(resourceUrl).then(function (response) {
+            this.$http.get('/', { params: parameter }).then(function (response) {
                 var tweets = response.body;
 
                 if (paging === false) {
                     self.allTweets = [];
                 }
-                console.log(tweets);
+
                 for (var index = tweets.length - 1; index > -1; index--) {
                     var tweet = tweets[index];
                     // if no tweet is stored or id is not the same as the first tweet in store
@@ -7936,7 +7943,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
 
                 // prevent memory consumption getting higher than displayable
                 self.allTweets = self.allTweets.slice(0, 15);
-                console.log(self.allTweets);
+
                 self.lineOne = self.allTweets.slice(0, 4);
                 self.lineTwo = self.allTweets.slice(4, 8);
                 self.lineThree = self.allTweets.slice(8, 12);

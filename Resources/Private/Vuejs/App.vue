@@ -36,15 +36,19 @@
         methods: {
             getTweets: function (paging) {
                 let self = this,
-                    resourceUrl = '?type=1507271557071' +
-                    '&tx_ewsocialfeedwall_display%5Bsearch%5D=' + encodeURIComponent(this.parameter);
+                    parameter = {
+                        type: 1507271557071,
+                        tx_ewsocialfeedwall_display: {
+                            search: encodeURIComponent(this.parameter)
+                        }
+                    };
 
                 if (this.sinceId) {
-                    resourceUrl += '&tx_ewsocialfeedwall_display%5Bsince_id%5D=' + this.sinceId
+                    parameter.tx_ewsocialfeedwall_display.since_id = this.sinceId;
                 }
 
                 // GET request using the resource
-                this.$http.get(resourceUrl).then(function (response) {
+                this.$http.get('/', {params: parameter}).then((response) => {
                     let tweets = response.body;
 
                     if (paging === false) {
