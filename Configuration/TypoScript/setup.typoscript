@@ -1,6 +1,7 @@
 plugin.tx_ewsocialfeedwall {
   settings {
     search = {$plugin.tx_ewsocialfeedwall.settings.search}
+    limit = {$plugin.tx_ewsocialfeedwall.settings.limit}
 
     twitter {
       consumer_key = {$plugin.tx_ewsocialfeedwall.settings.twitter.consumer_key}

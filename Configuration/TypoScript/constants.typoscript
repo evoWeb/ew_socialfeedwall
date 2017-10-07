@@ -1,6 +1,7 @@
 plugin.tx_ewsocialfeedwall {
   settings {
     search =
+    limit = 15
 
     twitter {
       consumer_key =
