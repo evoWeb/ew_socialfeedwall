@@ -53,9 +53,8 @@ class DisplayController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $twitterConfiguration = $this->settings['twitter'];
 
         $parameter = [
-            'q' => $this->request->getArgument('search'),
+            'q' => $this->request->getArgument('search') .  ' -filter:retweets',
             'count' => $this->settings['limit'],
-            'exclude_replies' => true,
         ];
 
         if ($this->request->hasArgument('since_id')) {
