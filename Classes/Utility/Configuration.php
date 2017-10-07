@@ -39,8 +39,10 @@ class Configuration
      */
     public static function mergeSettings(array $settings, $configuration = null)
     {
-        if (is_null($configuration) && isset($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][self::$extensionKey])) {
-            $configuration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][self::$extensionKey]);
+        if (isset($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][self::$extensionKey])) {
+            if (is_null($configuration)) {
+                $configuration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][self::$extensionKey]);
+            }
         } else {
             $configuration = [];
         }
