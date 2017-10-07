@@ -5,7 +5,7 @@ var app = angular.module('Twitter', ['ngResource', 'ngSanitize']);
 
 app.controller('TweetList', function ($scope, $resource, $timeout) {
 	// set search parameter
-	$scope.parameter = 't3crr';
+	$scope.parameter = '#t3crr';
 
 	// empty tweet model
 	$scope.allTweets = [];
@@ -14,17 +14,15 @@ app.controller('TweetList', function ($scope, $resource, $timeout) {
 	 * requests and processes tweet data
 	 */
 	function getTweets(paging) {
-		var parameter = {
-			action: 'search',
-			parameter: $scope.parameter
-		};
+		var resourceUrl = '?type=1507271557071' +
+			'&tx_ewsocialfeedwall_display%5Bsearch%5D=' + encodeURIComponent($scope.parameter);
 
 		if ($scope.sinceId) {
-			parameter.since_id = $scope.sinceId;
+			resourceUrl += '&tx_ewsocialfeedwall_display%5Bsince_id%5D=' + $scope.sinceId
 		}
 
 		// create Tweet data resource
-		$scope.tweets = $resource('?type=1507271557071&:action=:parameter', parameter);
+		$scope.tweets = $resource(resourceUrl);
 
 		// GET request using the resource
 		$scope.tweets.query({}, function (res) {
