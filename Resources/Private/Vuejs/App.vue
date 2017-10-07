@@ -11,13 +11,14 @@
 
 <script>
     import Vue from 'vue';
+    import VueResource from 'vue-resource';
+    Vue.use(VueResource);
 
     export default {
         data () {
             return {
                 parameter: 't3crr',
 
-                tweets: [],
                 allTweets: [],
                 lineOne: [],
                 lineTwo: [],
@@ -42,11 +43,8 @@
                     resourceUrl += '&tx_ewsocialfeedwall_display%5Bsince_id%5D=' + this.sinceId
                 }
 
-                // create Tweet data resource
-                this.tweets = $resource(resourceUrl);
-
                 // GET request using the resource
-                this.tweets.query({}, function (res) {
+                this.$http.get(resourceUrl, function (res) {
                     if (paging === false) {
                         self.allTweets = [];
                     }
