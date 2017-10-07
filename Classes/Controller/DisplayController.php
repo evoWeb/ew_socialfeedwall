@@ -50,31 +50,18 @@ class DisplayController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
     public function getTweetsAction()
     {
-        $twitterConfiguration = $this->settings['twitter'];
-
-        $parameter = [
-            'q' => $this->request->getArgument('search') .  ' -filter:retweets',
-            'count' => $this->settings['limit'],
-        ];
-
-        if ($this->request->hasArgument('since_id')) {
-            $parameter['since_id'] = $this->request->getArgument('since_id');
-        }
-
-        /** @var \Abraham\TwitterOAuth\TwitterOAuth $connection */
+        /** @var \Evoweb\EwSocialfeedwall\Service\TwitterService $twitterService */
         /** @noinspection PhpMethodParametersCountMismatchInspection */
-        $connection = $this->objectManager->get(
-            \Abraham\TwitterOAuth\TwitterOAuth::class,
-            $twitterConfiguration['consumer_key'],
-            $twitterConfiguration['consumer_secret'],
-            $twitterConfiguration['access_token'],
-            $twitterConfiguration['access_token_secret']
+        $twitterService = $this->objectManager->get(
+            \Evoweb\EwSocialfeedwall\Service\TwitterService::class,
+            $this->settings['twitter'],
+            $this->objectManager
         );
 
-        $statuses = $connection->get('search/tweets', $parameter);
+        $statuses = $twitterService->getByRequest($this->request);
 
         $this->request->setFormat('json');
-        $jsonResult = str_replace('\/', '/', \GuzzleHttp\json_encode($statuses->statuses));
+        $jsonResult = str_replace('\/', '/', \json_encode($statuses->statuses));
         return $jsonResult;
     }
 }
