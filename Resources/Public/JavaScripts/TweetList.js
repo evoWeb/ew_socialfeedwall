@@ -5,7 +5,7 @@ var app = angular.module('Twitter', ['ngResource', 'ngSanitize']);
 
 app.controller('TweetList', function ($scope, $resource, $timeout) {
 	// set search parameter
-	$scope.parameter = '#t3crr';
+	$scope.parameter = 't3crr';
 
 	// empty tweet model
 	$scope.allTweets = [];
