@@ -7891,7 +7891,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            parameter: 't3crr',
+            parameter: '',
 
             allTweets: [],
             lineOne: [],
@@ -7899,10 +7899,15 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
             lineThree: [],
             lineFour: [],
 
+            paging: true,
             sinceId: false
         };
     },
 
+
+    created: function created() {
+        this.parameter = document.querySelector(this.$root.$options.el).getAttribute('data-search');
+    },
 
     mounted: function mounted() {
         this.loadTweets();
@@ -7910,51 +7915,55 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
 
     methods: {
         getTweets: function getTweets(paging) {
-            var self = this,
-                parameter = {
+            var parameter = {
                 type: 1507271557071,
                 tx_ewsocialfeedwall_display: {
                     search: encodeURIComponent(this.parameter)
                 }
-            },
-                resourceUrl = '?type=1507271557071' + '&tx_ewsocialfeedwall_display%5Bsearch%5D=' + encodeURIComponent(this.parameter);
+            };
+
+            this.paging = paging;
 
             if (this.sinceId) {
                 parameter.tx_ewsocialfeedwall_display.since_id = this.sinceId;
-                resourceUrl += '&tx_ewsocialfeedwall_display%5Bsince_id%5D=' + this.sinceId;
             }
 
             // GET request using the resource
-            this.$http.get('/', { params: parameter }).then(function (response) {
-                var tweets = response.body;
+            this.$http.get('/', { params: parameter }).then(this.processAjaxResponse);
+        },
 
-                if (paging === false) {
-                    self.allTweets = [];
-                }
+        processAjaxResponse: function processAjaxResponse(response) {
+            var self = this,
+                tweets = response.body;
 
+            if (this.paging === false) {
+                this.allTweets = [];
+            }
+
+            if (tweets.length > 0) {
                 for (var index = tweets.length - 1; index > -1; index--) {
                     var tweet = tweets[index];
                     // if no tweet is stored or id is not the same as the first tweet in store
                     // this is to prevent storing last tweet in response equal to first tweet
-                    if (self.allTweets.length === 0 || tweet.id !== self.allTweets[0].id) {
-                        self.allTweets.unshift(tweet);
+                    if (this.allTweets.length === 0 || tweet.id !== this.allTweets[0].id) {
+                        this.allTweets.unshift(tweet);
                     }
                 }
 
                 // prevent memory consumption getting higher than displayable
-                self.allTweets = self.allTweets.slice(0, 15);
+                this.allTweets = this.allTweets.slice(0, 15);
 
-                self.lineOne = self.allTweets.slice(0, 4);
-                self.lineTwo = self.allTweets.slice(4, 8);
-                self.lineThree = self.allTweets.slice(8, 12);
-                self.lineFour = self.allTweets.slice(12, 15);
+                this.lineOne = this.allTweets.slice(0, 4);
+                this.lineTwo = this.allTweets.slice(4, 8);
+                this.lineThree = this.allTweets.slice(8, 12);
+                this.lineFour = this.allTweets.slice(12, 15);
 
                 // for paging - https://dev.twitter.com/docs/working-with-timelines
-                self.sinceId = tweets[0].id;
+                this.sinceId = tweets[0].id;
+            }
 
-                // retry after amount of milli seconds
-                setTimeout(self.getMoreTweets, 60 * 1000);
-            });
+            // retry after amount of milli seconds
+            setTimeout(this.getMoreTweets, 60 * 1000);
         },
 
         getMoreTweets: function getMoreTweets() {
