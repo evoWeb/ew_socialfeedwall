@@ -54,14 +54,12 @@ class DisplayController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         /** @noinspection PhpMethodParametersCountMismatchInspection */
         $twitterService = $this->objectManager->get(
             \Evoweb\EwSocialfeedwall\Service\TwitterService::class,
-            $this->settings['twitter'],
-            $this->objectManager
+            $this->settings['twitter']
         );
 
         $statuses = $twitterService->getByRequest($this->request);
 
         $this->request->setFormat('json');
-        $jsonResult = str_replace('\/', '/', \json_encode($statuses->statuses));
-        return $jsonResult;
+        return str_replace('\/', '/', \json_encode($statuses));
     }
 }

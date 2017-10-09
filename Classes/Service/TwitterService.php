@@ -19,11 +19,17 @@ class TwitterService
      * TwitterService constructor.
      *
      * @param array $settings
-     * @param ObjectManager $objectManager
      */
-    public function __construct(array $settings, ObjectManager $objectManager)
+    public function __construct(array $settings)
     {
         $this->settings = $settings;
+    }
+
+    /**
+     * @param ObjectManager $objectManager
+     */
+    public function injectObjectManager(\TYPO3\CMS\Extbase\Object\ObjectManager $objectManager)
+    {
         $this->objectManager = $objectManager;
     }
 
@@ -81,7 +87,7 @@ class TwitterService
     /**
      * @param array $parameter
      *
-     * @return array|object
+     * @return array
      */
     protected function queryTwitter($parameter)
     {
@@ -95,6 +101,13 @@ class TwitterService
             $this->settings['access_token_secret']
         );
 
-        return $connection->get('search/tweets', $parameter);
+        try {
+            $response = $connection->get('search/tweets', $parameter);
+            $result = $response->statuses;
+        } catch (\Exception $exception) {
+            $result = [];
+        }
+
+        return $result;
     }
 }
