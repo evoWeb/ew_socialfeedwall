@@ -99,3 +99,20 @@ a {
     line-height: 12em;
     text-align: center;
 }
+
+#soul_animation {
+    height: 160px;
+    position: absolute;
+    right: 20px;
+    top: 750px;
+    width: 417px;
+    z-index: 1000;
+    div {
+        height: 160px;
+        margin: 0 auto;
+        width: 160px;
+        background: url(../../../../t3crr/Resources/Public/Images/soul_animated.svg);
+        background-position: center center;
+        background-size: contain;
+    }
+}
