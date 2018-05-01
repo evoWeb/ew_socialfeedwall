@@ -23,7 +23,7 @@ class Configuration
     {
         if (is_null($configuration)) {
             if (class_exists(\TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class)) {
-                $configuration = (bool)\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+                $configuration = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
                     \TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class
                 )->get(self::$extensionKey);
             } else {
