@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-06-23T05:48:33Z" product-name="sessionplaner">
+		<header/>
+		<body>
+			<trans-unit id="tt_content.list_type_display" xml:space="preserve">
+				<source>Social feed wall</source>
+			</trans-unit>
+			<trans-unit id="display_flexform.sheet_general" xml:space="preserve">
+				<source>Configuration</source>
+			</trans-unit>
+			<trans-unit id="display_flexform.settings.searchOverride" xml:space="preserve">
+				<source>Override search term (used if not empty)</source>
+			</trans-unit>
+
+			<trans-unit id="display_flexform.settings.twitter.consumer_keyOverride" xml:space="preserve">
+				<source>Consumer key (used if not empty)</source>
+			</trans-unit>
+			<trans-unit id="display_flexform.settings.twitter.consumer_secretOverride" xml:space="preserve">
+				<source>Consumer secret (used if not empty)</source>
+			</trans-unit>
+			<trans-unit id="display_flexform.settings.twitter.access_tokenOverride" xml:space="preserve">
+				<source>Access token (used if not empty)</source>
+			</trans-unit>
+			<trans-unit id="display_flexform.settings.twitter.access_token_secretOverride" xml:space="preserve">
+				<source>Access token secret (used if not empty)</source>
+			</trans-unit>
+
+			<trans-unit id="twitter_consumer_key" xml:space="preserve">
+				<source>Twitter consumer key (used if not overridden)</source>
+			</trans-unit>
+			<trans-unit id="twitter_consumer_secret" xml:space="preserve">
+				<source>Twitter consumer secret (used if not overridden)</source>
+			</trans-unit>
+			<trans-unit id="twitter_access_token" xml:space="preserve">
+				<source>Twitter access token (used if not overridden)</source>
+			</trans-unit>
+			<trans-unit id="twitter_access_token_secret" xml:space="preserve">
+				<source>Twitter access token secret (used if not overridden)</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
