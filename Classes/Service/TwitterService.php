@@ -1,7 +1,16 @@
 <?php
 namespace Evoweb\EwSocialfeedwall\Service;
 
-use TYPO3\CMS\Extbase\Object\ObjectManager;
+/**
+ * This file is developed by evoweb.
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ */
 
 class TwitterService
 {
@@ -11,12 +20,12 @@ class TwitterService
     protected $settings = [];
 
     /**
-     * @var ObjectManager
+     * @var \TYPO3\CMS\Extbase\Object\ObjectManager
      */
     protected $objectManager;
 
     /**
-     * TwitterService constructor.
+     * Constructor
      *
      * @param array $settings
      */
@@ -25,25 +34,17 @@ class TwitterService
         $this->settings = $settings;
     }
 
-    /**
-     * @param ObjectManager $objectManager
-     */
     public function injectObjectManager(\TYPO3\CMS\Extbase\Object\ObjectManager $objectManager)
     {
         $this->objectManager = $objectManager;
     }
 
-    /**
-     * @param \TYPO3\CMS\Extbase\Mvc\Request $request
-     *
-     * @return array|object
-     */
-    public function getByRequest($request)
+    public function getByRequest(\TYPO3\CMS\Extbase\Mvc\Request $request): array
     {
         if ($request->hasArgument('since_id')) {
             return $this->getBySearchAndSinceId(
                 $request->getArgument('search'),
-                $request->getArgument('since_id')
+                (int) $request->getArgument('since_id')
             );
         } else {
             return $this->getBySearch(
@@ -52,12 +53,7 @@ class TwitterService
         }
     }
 
-    /**
-     * @param string $search
-     *
-     * @return array|object
-     */
-    public function getBySearch($search)
+    public function getBySearch(string $search): array
     {
         $parameter = [
             'q' => $search . ' -filter:retweets',
@@ -67,13 +63,7 @@ class TwitterService
         return $this->queryTwitter($parameter);
     }
 
-    /**
-     * @param string $search
-     * @param string $sinceId
-     *
-     * @return array|object
-     */
-    public function getBySearchAndSinceId($search, $sinceId)
+    public function getBySearchAndSinceId(string $search, int $sinceId): array
     {
         $parameter = [
             'q' => $search . ' -filter:retweets',
@@ -84,12 +74,7 @@ class TwitterService
         return $this->queryTwitter($parameter);
     }
 
-    /**
-     * @param array $parameter
-     *
-     * @return array
-     */
-    protected function queryTwitter($parameter)
+    protected function queryTwitter(array $parameter): array
     {
         /** @var \Abraham\TwitterOAuth\TwitterOAuth $connection */
         /** @noinspection PhpMethodParametersCountMismatchInspection */

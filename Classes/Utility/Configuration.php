@@ -2,28 +2,16 @@
 namespace Evoweb\EwSocialfeedwall\Utility;
 
 /**
- * Class Configuration
+ * This file is developed by evoweb.
  *
- * Supported are
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- * TypoScript setup:
- * plugin.extension {
- *  settings {
- *   key1 = value2a
- *   key2 {
- *    subKey2 = value3a
- *   }
- *  }
- * }
- *
- * Override in Flexform:
- * settings.key1Override = value2b
- * settings.key2.subKey2Override = value3b
- *
- * Fallback in extension configuration:
- * key1 = value2
- * key2.subKey2 = value3
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  */
+
 class Configuration
 {
     /**
@@ -31,16 +19,14 @@ class Configuration
      */
     protected static $extensionKey = 'ew_socialfeedwall';
 
-    /**
-     * @param array $settings
-     * @param array|null $configuration
-     *
-     * @return array
-     */
-    public static function mergeSettings(array $settings, $configuration = null)
+    public static function mergeSettings(array $settings, array $configuration = null): array
     {
-        if (isset($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][self::$extensionKey])) {
-            if (is_null($configuration)) {
+        if (is_null($configuration)) {
+            if (class_exists(\TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class)) {
+                $configuration = (bool)\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+                    \TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class
+                )->get(self::$extensionKey);
+            } else {
                 $configuration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][self::$extensionKey]);
             }
         } else {

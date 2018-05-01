@@ -1,9 +1,12 @@
 {
 	"name": "evoweb/ew-socialfeedwall",
-	"type": "typo3-cms-plugin",
+	"type": "typo3-cms-extension",
 	"description": "Displays social feeds like twitter wall",
 	"homepage": "http://www.evoweb.de/",
-	"license": ["GPL-2.0+"],
+
+	"license": [
+		"GPL-2.0-or-later"
+	],
 
 	"support": {
 		"issues": "https://github.com/evoWeb/ew_socialfeedwall/issues"
@@ -13,7 +16,7 @@
 	],
 
 	"require": {
-		"typo3/cms": ">=8.7.0",
+		"typo3/cms-core": "*",
 		"abraham/twitteroauth": "^0.7.4"
 	},
 
@@ -24,18 +27,13 @@
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"TYPO3\\CMS\\Core\\Tests\\": ".Build/Web/typo3/sysext/core/Tests/",
 			"Evoweb\\EwSocialfeedwall\\Tests\\": "Tests/"
 		}
 	},
 
 	"config": {
 		"vendor-dir": ".Build/vendor",
-		"bin-dir": ".Build/bin",
-		"preferred-install": {
-			"typo3/cms": "source",
-			"*": "dist"
-		}
+		"bin-dir": ".Build/bin"
 	},
 	"extra": {
 		"typo3/cms": {
