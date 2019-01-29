@@ -1,0 +1,15 @@
+mod.wizards.newContentElement.wizardItems {
+  plugins.elements {
+    ewsocialfeedwall_display {
+      iconIdentifier = content-text
+      title = LLL:EXT:ew_socialfeedwall/Resources/Private/Language/locallang_be.xlf:tt_content.list_type_display
+      description = LLL:EXT:ew_socialfeedwall/Resources/Private/Language/locallang_be.xlf:tt_content.list_type_display_description
+      tt_content_defValues {
+        CType = list
+        list_type = ewsocialfeedwall_display
+      }
+    }
+  }
+
+  plugins.show := addToList(ewsocialfeedwall_display)
+}

@@ -2,7 +2,7 @@
 namespace Evoweb\EwSocialfeedwall\Utility;
 
 /**
- * This file is developed by evoweb.
+ * This file is developed by evoWeb.
  *
  * It is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License, either version 2
@@ -23,7 +23,7 @@ class Configuration
     {
         if (is_null($configuration)) {
             if (class_exists(\TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class)) {
-                $configuration = (bool)\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+                $configuration = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
                     \TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class
                 )->get(self::$extensionKey);
             } else {

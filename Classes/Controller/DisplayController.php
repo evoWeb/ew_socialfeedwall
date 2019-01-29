@@ -2,7 +2,7 @@
 namespace Evoweb\EwSocialfeedwall\Controller;
 
 /**
- * This file is developed by evoweb.
+ * This file is developed by evoWeb.
  *
  * It is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License, either version 2
@@ -59,7 +59,6 @@ class DisplayController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     public function getTweetsAction(): string
     {
         /** @var \Evoweb\EwSocialfeedwall\Service\TwitterService $twitterService */
-        /** @noinspection PhpMethodParametersCountMismatchInspection */
         $twitterService = $this->objectManager->get(
             \Evoweb\EwSocialfeedwall\Service\TwitterService::class,
             $this->settings['twitter']

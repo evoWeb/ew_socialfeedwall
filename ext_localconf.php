@@ -12,4 +12,12 @@ call_user_func(function () {
             'Display' => 'getTweets',
         ]
     );
+
+    /**
+     * Page TypoScript for new content element wizards
+     */
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
+        '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ew_socialfeedwall/Configuration/'
+        . 'TSconfig/NewContentElement.typoscript">'
+    );
 });

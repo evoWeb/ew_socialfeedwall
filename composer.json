@@ -11,12 +11,13 @@
 	"support": {
 		"issues": "https://github.com/evoWeb/ew_socialfeedwall/issues"
 	},
+
 	"keywords": [
 		"twitter feed"
 	],
 
 	"require": {
-		"typo3/cms-core": "*",
+		"typo3/cms-core": "^8.7 || ^9.5",
 		"abraham/twitteroauth": "^0.7.4"
 	},
 
@@ -32,7 +33,7 @@
 	},
 
 	"config": {
-		"vendor-dir": ".Build/vendor",
+		"vendor-dir": ".Build/Web/vendor",
 		"bin-dir": ".Build/bin"
 	},
 	"extra": {
