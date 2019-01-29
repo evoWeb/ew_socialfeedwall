@@ -2,7 +2,7 @@
 namespace Evoweb\EwSocialfeedwall\Service;
 
 /**
- * This file is developed by evoweb.
+ * This file is developed by evoWeb.
  *
  * It is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License, either version 2
@@ -77,7 +77,6 @@ class TwitterService
     protected function queryTwitter(array $parameter): array
     {
         /** @var \Abraham\TwitterOAuth\TwitterOAuth $connection */
-        /** @noinspection PhpMethodParametersCountMismatchInspection */
         $connection = $this->objectManager->get(
             \Abraham\TwitterOAuth\TwitterOAuth::class,
             $this->settings['consumer_key'],
