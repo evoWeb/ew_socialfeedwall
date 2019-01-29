@@ -50,7 +50,7 @@ jobs:
     - &lint
       stage: test
       php: 7.3
-      env: PHP Lint
+      env: TASK="PHP Lint"
       before_install: skip
       install: skip
       before_script: skip
