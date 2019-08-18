@@ -22,13 +22,9 @@ class Configuration
     public static function mergeSettings(array $settings, array $configuration = null): array
     {
         if (is_null($configuration)) {
-            if (class_exists(\TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class)) {
-                $configuration = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-                    \TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class
-                )->get(self::$extensionKey);
-            } else {
-                $configuration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][self::$extensionKey]);
-            }
+            $configuration = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+                \TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class
+            )->get(self::$extensionKey);
         } else {
             $configuration = [];
         }
