@@ -3,13 +3,13 @@ defined('TYPO3_MODE') || die('Access denied.');
 
 call_user_func(function () {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-        'Evoweb.EwSocialfeedwall',
+        'EwSocialfeedwall',
         'Display',
         [
-            'Display' => 'show, getTweets',
+            \Evoweb\EwSocialfeedwall\Controller\DisplayController::class => 'show, getTweets',
         ],
         [
-            'Display' => 'getTweets',
+            \Evoweb\EwSocialfeedwall\Controller\DisplayController::class => 'getTweets',
         ]
     );
 
@@ -17,7 +17,6 @@ call_user_func(function () {
      * Page TypoScript for new content element wizards
      */
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
-        '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ew_socialfeedwall/Configuration/'
-        . 'TSconfig/NewContentElement.typoscript">'
+        '@import \'EXT:ew_socialfeedwall/Configuration/TSconfig/NewContentElement.typoscript\''
     );
 });
