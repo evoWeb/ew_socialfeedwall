@@ -9,10 +9,10 @@ $EM_CONF['ew_socialfeedwall'] = [
     'author_company' => 'evoweb',
     'state' => 'stable',
     'clearCacheOnLoad' => 1,
-    'version' => '2.0.0',
+    'version' => '2.0.1',
     'constraints' => [
         'depends' => [
-            'typo3' => '10.0.0-10.99.99',
+            'typo3' => '10.0.0-10.4.99',
         ],
     ],
 ];
