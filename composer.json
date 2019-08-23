@@ -4,9 +4,7 @@
 	"description": "Displays social feeds like twitter wall",
 	"homepage": "http://www.evoweb.de/",
 
-	"license": [
-		"GPL-2.0-or-later"
-	],
+	"license": "GPL-2.0-or-later",
 
 	"support": {
 		"issues": "https://github.com/evoWeb/ew_socialfeedwall/issues"
@@ -26,18 +24,14 @@
 			"Evoweb\\EwSocialfeedwall\\": "Classes/"
 		}
 	},
-	"autoload-dev": {
-		"psr-4": {
-			"Evoweb\\EwSocialfeedwall\\Tests\\": "Tests/"
-		}
-	},
 
 	"config": {
-		"vendor-dir": ".Build/Web/vendor",
+		"vendor-dir": ".Build/vendor",
 		"bin-dir": ".Build/bin"
 	},
 	"extra": {
 		"typo3/cms": {
+			"extension-key": "ew_socialfeedwall",
 			"cms-package-dir": "{$vendor-dir}/typo3/cms",
 			"web-dir": ".Build/Web"
 		}
