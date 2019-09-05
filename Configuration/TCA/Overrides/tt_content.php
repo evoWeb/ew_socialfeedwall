@@ -5,7 +5,7 @@ defined('TYPO3_MODE') || die('Access denied.');
  * Frontend Plugin Display
  */
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'Evoweb.EwSocialfeedwall',
+    'ew_socialfeedwall',
     'Display',
     'LLL:EXT:ew_socialfeedwall/Resources/Private/Language/locallang_be.xlf:tt_content.list_type_display',
     'EXT:ew_socialfeedwall/Resources/Public/Icons/Extension.svg'
