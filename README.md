@@ -7,7 +7,7 @@ ew_socialfeedwall
 
 ### via Composer
 
-Its recommended to install the extension via composer. Either add it to your composer.json
+It's recommended to install the extension via composer. Either add it to your composer.json
 in the TYPO3 project root or in the project root just enter 
 
-composer require evoweb/ew-socialfeedwall
+    composer require evoweb/ew-socialfeedwall
