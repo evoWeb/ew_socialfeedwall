@@ -52,7 +52,9 @@ jobs:
       env: TASK="PHP Lint"
       install: skip
       script:
-      - errors=$(find . -name \*.php ! -path "./.Build/*" -exec php -d display_errors=stderr -l {} 2>&1 >/dev/null \;) && echo "$errors" && test -z "$errors"
+        - |
+          echo "Running php lint";
+          errors=$(find . -name \*.php ! -path "./.Build/*" -exec php -d display_errors=stderr -l {} 2>&1 >/dev/null \;) && echo "$errors" && test -z "$errors"
     - <<: *lint
       php: 7.3
     - <<: *lint
@@ -81,7 +83,7 @@ jobs:
       install: skip
       script:
         - |
-            if [[ "$TRAVIS_TAG" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] && [ -n "$TYPO3_ORG_USERNAME" ] && [ -n "$TYPO3_ORG_PASSWORD" ]; then
+          if [[ "$TRAVIS_TAG" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] && [ -n "$TYPO3_ORG_USERNAME" ] && [ -n "$TYPO3_ORG_PASSWORD" ]; then
             echo -e "Preparing upload of release ${TRAVIS_TAG} to TER\n";
 
             # Install requirements
