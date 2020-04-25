@@ -7,6 +7,7 @@
 	"license": "GPL-2.0-or-later",
 
 	"support": {
+		"docs": "https://docs.typo3.org/p/evoweb/ew-socialfeedwall/master/en-us/",
 		"issues": "https://github.com/evoWeb/ew_socialfeedwall/issues"
 	},
 
@@ -15,7 +16,12 @@
 	],
 
 	"require": {
-		"typo3/cms-core": "^10.0",
+		"ext-json": "*",
+
+		"typo3/cms-core": "^10.4",
+		"typo3/cms-extbase": "^10.4",
+		"typo3/cms-fluid": "^10.4",
+
 		"abraham/twitteroauth": "^0.7.4"
 	},
 
@@ -26,8 +32,7 @@
 	},
 
 	"config": {
-		"vendor-dir": ".Build/vendor",
-		"bin-dir": ".Build/bin"
+		"vendor-dir": ".Build/Web/vendor"
 	},
 	"extra": {
 		"typo3/cms": {

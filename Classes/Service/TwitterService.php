@@ -1,7 +1,8 @@
 <?php
+
 namespace Evoweb\EwSocialfeedwall\Service;
 
-/**
+/*
  * This file is developed by evoWeb.
  *
  * It is free software; you can redistribute it and/or modify it under
@@ -19,24 +20,9 @@ class TwitterService
      */
     protected $settings = [];
 
-    /**
-     * @var \TYPO3\CMS\Extbase\Object\ObjectManager
-     */
-    protected $objectManager;
-
-    /**
-     * Constructor
-     *
-     * @param array $settings
-     */
-    public function __construct(array $settings)
+    public function setSettings(array $settings)
     {
         $this->settings = $settings;
-    }
-
-    public function injectObjectManager(\TYPO3\CMS\Extbase\Object\ObjectManager $objectManager)
-    {
-        $this->objectManager = $objectManager;
     }
 
     public function getByRequest(\TYPO3\CMS\Extbase\Mvc\Request $request): array
@@ -76,9 +62,7 @@ class TwitterService
 
     protected function queryTwitter(array $parameter): array
     {
-        /** @var \Abraham\TwitterOAuth\TwitterOAuth $connection */
-        $connection = $this->objectManager->get(
-            \Abraham\TwitterOAuth\TwitterOAuth::class,
+        $connection = new \Abraham\TwitterOAuth\TwitterOAuth(
             $this->settings['consumer_key'],
             $this->settings['consumer_secret'],
             $this->settings['access_token'],

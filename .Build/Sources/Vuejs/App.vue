@@ -44,7 +44,7 @@
              */
             getTweets: function (paging) {
                 let parameter = {
-                        type: 1507271557071,
+                        type: 15072715,
                         tx_ewsocialfeedwall_display: {
                             search: encodeURIComponent(this.parameter)
                         }

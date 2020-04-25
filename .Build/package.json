@@ -28,11 +28,11 @@
   },
 
   "scripts": {
-    "node-sass": "node-sass --output-style compressed Private/Scss/TweetList.scss Public/Stylesheets/TweetList.min.css",
+    "node-sass": "node-sass --output-style compressed Sources/Scss/TweetList.scss ../Resources/Public/Stylesheets/TweetList.min.css",
     "build:css": "npm run node-sass",
 
-    "node-sass:dev": "node-sass --output-style expanded Private/Scss/TweetList.scss Public/Stylesheets/TweetList.css",
-    "csslint": "csslint --quiet Public/Stylesheets/TweetList.css",
+    "node-sass:dev": "node-sass --output-style expanded Sources/Scss/TweetList.scss ../Resources/Public/Stylesheets/TweetList.css",
+    "csslint": "csslint --quiet ../Resources/Public/Stylesheets/TweetList.css",
     "build:dev:css": "npm run node-sass:dev",
 
     "build:dev": "npm run build:dev:css",

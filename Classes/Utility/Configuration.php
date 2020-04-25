@@ -1,7 +1,8 @@
 <?php
+
 namespace Evoweb\EwSocialfeedwall\Utility;
 
-/**
+/*
  * This file is developed by evoWeb.
  *
  * It is free software; you can redistribute it and/or modify it under
@@ -22,9 +23,11 @@ class Configuration
     public static function mergeSettings(array $settings, array $configuration = null): array
     {
         if (is_null($configuration)) {
-            $configuration = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+            /** @var \TYPO3\CMS\Core\Configuration\ExtensionConfiguration $extensionConfiguration */
+            $extensionConfiguration = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
                 \TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class
-            )->get(self::$extensionKey);
+            );
+            $configuration = $extensionConfiguration->get(self::$extensionKey);
         } else {
             $configuration = [];
         }
@@ -41,7 +44,7 @@ class Configuration
                     // get nested configuration
                     (isset($configuration[$key . '.']) ? $configuration[$key . '.'] : [])
                 );
-                // for non array value check if override exist
+            // for non array value check if override exist
             } elseif (isset($settings[$overrideKey])) {
                 // if override is not empty use it
                 if (!empty($settings[$overrideKey])) {

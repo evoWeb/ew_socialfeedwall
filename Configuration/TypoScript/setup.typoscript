@@ -10,29 +10,19 @@ plugin.tx_ewsocialfeedwall {
       access_token_secret = {$plugin.tx_ewsocialfeedwall.settings.twitter.access_token_secret}
     }
   }
-
-  view {
-    cssFiles {
-      tweetList = EXT:ew_socialfeedwall/Resources/Public/Stylesheets/TweetList.css
-    }
-    jsFooterFiles {
-      tweetList = EXT:ew_socialfeedwall/Resources/Public/JavaScripts/TweetList.js
-    }
-  }
 }
 
 // PAGE object for Ajax call:
 ajaxselectlist_page = PAGE
 ajaxselectlist_page {
-  typeNum = 1507271557071
-
+  typeNum = 15072715
+  headerData >
   config {
-    disableAllHeaderCode = 1
-    additionalHeaders = Content-type:application/json
-    xhtml_cleaning = 0
-    debug = 0
     no_cache = 1
-    admPanel = 0
+    disableAllHeaderCode = 1
+    additionalHeaders.10.header = Content-type: application/json
+    additionalHeaders.10.replace = 1
+    debug = 0
   }
 
   10 < tt_content.list.20.ewsocialfeedwall_display

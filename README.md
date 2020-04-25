@@ -1,13 +1,17 @@
-ew_socialfeedwall
-=================
-
+# ew_socialfeedwall
 [![Build Status](https://travis-ci.org/evoWeb/ew_socialfeedwall.svg?branch=develop)](https://travis-ci.org/evoWeb/ew_socialfeedwall)
-
+[![Latest Stable Version](https://poser.pugx.org/evoweb/ew-socialfeedwall/v/stable)](https://packagist.org/packages/evoweb/ew-socialfeedwall)
+[![Monthly Downloads](https://poser.pugx.org/evoweb/ew-socialfeedwall/d/monthly)](https://packagist.org/packages/evoweb/ew-socialfeedwall)
+[![Total Downloads](https://poser.pugx.org/evoweb/ew-socialfeedwall/downloads)](https://packagist.org/packages/evoweb/ew-socialfeedwall)
 ## Installation
 
 ### via Composer
 
-It's recommended to install the extension via composer. Either add it to your composer.json
-in the TYPO3 project root or in the project root just enter 
+The recommended way to install TYPO3 Console is by using [Composer](https://getcomposer.org):
 
     composer require evoweb/ew-socialfeedwall
+
+### via TYPO3 Extension Repository
+
+Download and install the extension with the extension manger module or directly from the
+[TER](https://extensions.typo3.org/extension/ew_socialfeedwall/).

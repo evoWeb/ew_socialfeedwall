@@ -3,12 +3,12 @@ var path = require('path'),
 
 module.exports = {
 	// This is the "main" file which should include all other modules
-	entry: './Private/Vuejs/TweetList.js',
+	entry: './Sources/Vuejs/TweetList.js',
 
 	// Where should the compiled file go?
 	output: {
 		// To the `dist` folder
-		path: path.resolve(__dirname, './Public/JavaScripts'),
+		path: path.resolve(__dirname, '../Resources/Public/JavaScripts'),
 		// With the filename `build.js` so it's dist/build.js
 		filename: 'TweetList.js'
 	},
