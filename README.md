@@ -1,8 +1,10 @@
 # ew_socialfeedwall
-[![Build Status](https://travis-ci.org/evoWeb/ew_socialfeedwall.svg?branch=develop)](https://travis-ci.org/evoWeb/ew_socialfeedwall)
+
+![build](https://github.com/evoWeb/ew_socialfeedwall/workflows/build/badge.svg?branch=develop)
 [![Latest Stable Version](https://poser.pugx.org/evoweb/ew-socialfeedwall/v/stable)](https://packagist.org/packages/evoweb/ew-socialfeedwall)
 [![Monthly Downloads](https://poser.pugx.org/evoweb/ew-socialfeedwall/d/monthly)](https://packagist.org/packages/evoweb/ew-socialfeedwall)
 [![Total Downloads](https://poser.pugx.org/evoweb/ew-socialfeedwall/downloads)](https://packagist.org/packages/evoweb/ew-socialfeedwall)
+
 ## Installation
 
 ### via Composer
