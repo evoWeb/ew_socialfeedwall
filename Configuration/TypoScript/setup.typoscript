@@ -4,10 +4,7 @@ plugin.tx_ewsocialfeedwall {
     limit = {$plugin.tx_ewsocialfeedwall.settings.limit}
 
     twitter {
-      consumer_key = {$plugin.tx_ewsocialfeedwall.settings.twitter.consumer_key}
-      consumer_secret = {$plugin.tx_ewsocialfeedwall.settings.twitter.consumer_secret}
-      access_token = {$plugin.tx_ewsocialfeedwall.settings.twitter.access_token}
-      access_token_secret = {$plugin.tx_ewsocialfeedwall.settings.twitter.access_token_secret}
+      bearer_token = {$plugin.tx_ewsocialfeedwall.settings.twitter.bearer_token}
     }
   }
 }

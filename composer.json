@@ -18,11 +18,11 @@
 	"require": {
 		"ext-json": "*",
 
-		"typo3/cms-core": "^10.4",
+		"typo3/cms-core": "^11.0.0",
 		"typo3/cms-extbase": "*",
 		"typo3/cms-fluid": "*",
 
-		"abraham/twitteroauth": "^0.7.4"
+		"abraham/twitteroauth": "^2.0.1"
 	},
 
 	"autoload": {

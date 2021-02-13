@@ -3,6 +3,10 @@
 <f:asset.css identifier="ew_socialfeedwallcss" href="EXT:ew_socialfeedwall/Resources/Public/Stylesheets/TweetList.min.css" />
 <f:asset.script identifier="ew_socialfeedwalljs" src="EXT:ew_socialfeedwall/Resources/Public/JavaScript/TweetList.js" />
 
+<f:if condition="!{settings.search}"><div class="error">Search needs to be configured</div></f:if>
+<f:if condition="!{settings.limit}"><div class="error">Limit needs to be configured</div></f:if>
+<f:if condition="!{settings.twitter.bearer_token}"><div class="error">Twitter bearer token needs to be configured</div></f:if>
+
 <div id="app" data-search="{settings.search}"></div>
 
 <div id="soul_animation">

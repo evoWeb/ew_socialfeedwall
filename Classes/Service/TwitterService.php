@@ -15,10 +15,7 @@ namespace Evoweb\EwSocialfeedwall\Service;
 
 class TwitterService
 {
-    /**
-     * @var array
-     */
-    protected $settings = [];
+    protected array $settings = [];
 
     public function setSettings(array $settings)
     {
@@ -63,15 +60,19 @@ class TwitterService
     protected function queryTwitter(array $parameter): array
     {
         $connection = new \Abraham\TwitterOAuth\TwitterOAuth(
-            $this->settings['consumer_key'],
-            $this->settings['consumer_secret'],
-            $this->settings['access_token'],
-            $this->settings['access_token_secret']
+            '',
+            '',
+            '',
+            $this->settings['twitter']['bearer_token']
         );
 
         try {
             $response = $connection->get('search/tweets', $parameter);
-            $result = $response->statuses;
+            if (isset($response->errors) && !empty($response->errors)) {
+                $result = [];
+            } else {
+                $result = $response->statuses;
+            }
         } catch (\Exception $exception) {
             $result = [];
         }
