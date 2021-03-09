@@ -13,6 +13,7 @@ namespace Evoweb\EwSocialfeedwall\Service;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Abraham\TwitterOAuth\TwitterOAuth;
 use TYPO3\CMS\Extbase\Mvc\Request;
 
 class TwitterService
@@ -60,7 +61,7 @@ class TwitterService
 
     protected function queryTwitter(array $parameter): array
     {
-        $connection = new \Abraham\TwitterOAuth\TwitterOAuth(
+        $connection = new TwitterOAuth(
             '',
             '',
             '',

@@ -18,8 +18,9 @@ use Evoweb\EwSocialfeedwall\Utility\Configuration;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Http\HtmlResponse;
 use TYPO3\CMS\Core\Http\JsonResponse;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
-class DisplayController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class DisplayController extends ActionController
 {
     protected TwitterService $twitterService;
 
