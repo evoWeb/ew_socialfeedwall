@@ -13,6 +13,8 @@ namespace Evoweb\EwSocialfeedwall\Service;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use TYPO3\CMS\Extbase\Mvc\Request;
+
 class TwitterService
 {
     protected array $settings = [];
@@ -22,18 +24,17 @@ class TwitterService
         $this->settings = $settings;
     }
 
-    public function getByRequest(\TYPO3\CMS\Extbase\Mvc\Request $request): array
+    public function getByRequest(Request $request): array
     {
         if ($request->hasArgument('since_id')) {
             return $this->getBySearchAndSinceId(
                 $request->getArgument('search'),
-                (int) $request->getArgument('since_id')
-            );
-        } else {
-            return $this->getBySearch(
-                $request->getArgument('search')
+                (int)$request->getArgument('since_id')
             );
         }
+        return $this->getBySearch(
+            $request->getArgument('search')
+        );
     }
 
     public function getBySearch(string $search): array
