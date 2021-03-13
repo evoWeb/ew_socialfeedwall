@@ -1,11 +1,2 @@
-# cat=basic; type=string; label=LLL:EXT:ew_socialfeedwall/Resources/Private/Language/locallang_be.xlf:twitter_consumer_key
-twitter.consumer_key =
-
-# cat=basic; type=string; label=LLL:EXT:ew_socialfeedwall/Resources/Private/Language/locallang_be.xlf:twitter_consumer_secret
-twitter.consumer_secret =
-
-# cat=basic; type=string; label=LLL:EXT:ew_socialfeedwall/Resources/Private/Language/locallang_be.xlf:twitter_access_token
-twitter.access_token =
-
-# cat=basic; type=string; label=LLL:EXT:ew_socialfeedwall/Resources/Private/Language/locallang_be.xlf:twitter_access_token_secret
-twitter.access_token_secret =
+# cat=ew_socialfeedwall/twitter; type=string; label=LLL:EXT:ew_socialfeedwall/Resources/Private/Language/locallang_be.xlf:bearer_token
+twitter.bearer_token =

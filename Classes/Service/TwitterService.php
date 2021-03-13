@@ -13,30 +13,29 @@ namespace Evoweb\EwSocialfeedwall\Service;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Abraham\TwitterOAuth\TwitterOAuth;
+use TYPO3\CMS\Extbase\Mvc\Request;
+
 class TwitterService
 {
-    /**
-     * @var array
-     */
-    protected $settings = [];
+    protected array $settings = [];
 
     public function setSettings(array $settings)
     {
         $this->settings = $settings;
     }
 
-    public function getByRequest(\TYPO3\CMS\Extbase\Mvc\Request $request): array
+    public function getByRequest(Request $request): array
     {
         if ($request->hasArgument('since_id')) {
             return $this->getBySearchAndSinceId(
                 $request->getArgument('search'),
-                (int) $request->getArgument('since_id')
-            );
-        } else {
-            return $this->getBySearch(
-                $request->getArgument('search')
+                (int)$request->getArgument('since_id')
             );
         }
+        return $this->getBySearch(
+            $request->getArgument('search')
+        );
     }
 
     public function getBySearch(string $search): array
@@ -62,16 +61,20 @@ class TwitterService
 
     protected function queryTwitter(array $parameter): array
     {
-        $connection = new \Abraham\TwitterOAuth\TwitterOAuth(
-            $this->settings['consumer_key'],
-            $this->settings['consumer_secret'],
-            $this->settings['access_token'],
-            $this->settings['access_token_secret']
+        $connection = new TwitterOAuth(
+            '',
+            '',
+            '',
+            $this->settings['twitter']['bearer_token']
         );
 
         try {
             $response = $connection->get('search/tweets', $parameter);
-            $result = $response->statuses;
+            if (isset($response->errors) && !empty($response->errors)) {
+                $result = [];
+            } else {
+                $result = $response->statuses;
+            }
         } catch (\Exception $exception) {
             $result = [];
         }

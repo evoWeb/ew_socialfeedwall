@@ -13,23 +13,27 @@ namespace Evoweb\EwSocialfeedwall\Utility;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+
 class Configuration
 {
-    /**
-     * @var string
-     */
-    protected static $extensionKey = 'ew_socialfeedwall';
+    protected static string $extensionKey = 'ew_socialfeedwall';
 
-    public static function mergeSettings(array $settings, array $configuration = null): array
+    protected ExtensionConfiguration $extensionConfiguration;
+
+    public function __construct(ExtensionConfiguration $extensionConfiguration)
     {
-        if (is_null($configuration)) {
-            /** @var \TYPO3\CMS\Core\Configuration\ExtensionConfiguration $extensionConfiguration */
-            $extensionConfiguration = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-                \TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class
-            );
-            $configuration = $extensionConfiguration->get(self::$extensionKey);
-        } else {
-            $configuration = [];
+        $this->extensionConfiguration = $extensionConfiguration;
+    }
+
+    public function mergeSettings(array $settings, array $configuration = []): array
+    {
+        if (empty($configuration) || !is_array($configuration)) {
+            try {
+                $configuration = $this->extensionConfiguration->get(self::$extensionKey);
+            } catch (\Exception $e) {
+                $configuration = [];
+            }
         }
 
         // iterate over the array
@@ -39,10 +43,10 @@ class Configuration
 
             // recursive use if is array
             if (is_array($value)) {
-                $value = Configuration::mergeSettings(
+                $value = $this->mergeSettings(
                     $value,
                     // get nested configuration
-                    (isset($configuration[$key . '.']) ? $configuration[$key . '.'] : [])
+                    $configuration[$key] ?? []
                 );
             // for non array value check if override exist
             } elseif (isset($settings[$overrideKey])) {
@@ -50,15 +54,15 @@ class Configuration
                 if (!empty($settings[$overrideKey])) {
                     $value = $settings[$overrideKey];
                 }
-
-                // remove override
-                unset($settings[$overrideKey]);
             }
 
             // if value is empty but fallback configuration exists
             if (empty($value) && isset($configuration[$key])) {
                 $value = $configuration[$key];
             }
+
+            // remove override
+            unset($settings[$overrideKey]);
         });
 
         return $settings;

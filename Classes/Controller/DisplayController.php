@@ -14,34 +14,38 @@ namespace Evoweb\EwSocialfeedwall\Controller;
  */
 
 use Evoweb\EwSocialfeedwall\Service\TwitterService;
+use Evoweb\EwSocialfeedwall\Utility\Configuration;
+use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Http\HtmlResponse;
+use TYPO3\CMS\Core\Http\JsonResponse;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
-class DisplayController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class DisplayController extends ActionController
 {
-    /**
-     * @var TwitterService
-     */
-    protected $twitterService;
+    protected TwitterService $twitterService;
 
-    public function __construct(TwitterService $twitterService)
+    protected Configuration $configuration;
+
+    public function __construct(TwitterService $twitterService, Configuration $configuration)
     {
         $this->twitterService = $twitterService;
+        $this->configuration = $configuration;
     }
 
     protected function initializeAction()
     {
-        $this->settings = \Evoweb\EwSocialfeedwall\Utility\Configuration::mergeSettings($this->settings);
+        $this->settings = $this->configuration->mergeSettings($this->settings);
     }
 
-    public function showAction()
+    public function showAction(): ResponseInterface
     {
+        return new HtmlResponse($this->view->render());
     }
 
-    public function getTweetsAction(): string
+    public function getTweetsAction(): ResponseInterface
     {
-        $this->twitterService->setSettings($this->settings['twitter']);
+        $this->twitterService->setSettings($this->settings);
         $statuses = $this->twitterService->getByRequest($this->request);
-
-        $this->request->setFormat('json');
-        return str_replace('\/', '/', \json_encode($statuses));
+        return new JsonResponse($statuses);
     }
 }

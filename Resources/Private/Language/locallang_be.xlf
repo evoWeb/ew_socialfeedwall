@@ -10,33 +10,18 @@
 				<source>Configuration</source>
 			</trans-unit>
 			<trans-unit id="display_flexform.settings.searchOverride">
-				<source>Override search term (used if not empty)</source>
+				<source>Override search term</source>
+			</trans-unit>
+			<trans-unit id="display_flexform.settings.limitOverride">
+				<source>Limit of tweets to display</source>
 			</trans-unit>
 
-			<trans-unit id="display_flexform.settings.twitter.consumer_keyOverride">
-				<source>Consumer key (used if not empty)</source>
-			</trans-unit>
-			<trans-unit id="display_flexform.settings.twitter.consumer_secretOverride">
-				<source>Consumer secret (used if not empty)</source>
-			</trans-unit>
-			<trans-unit id="display_flexform.settings.twitter.access_tokenOverride">
-				<source>Access token (used if not empty)</source>
-			</trans-unit>
-			<trans-unit id="display_flexform.settings.twitter.access_token_secretOverride">
-				<source>Access token secret (used if not empty)</source>
+			<trans-unit id="display_flexform.settings.twitter.bearer_tokenOverride">
+				<source>Twitter bearer token</source>
 			</trans-unit>
 
-			<trans-unit id="twitter_consumer_key">
-				<source>Twitter consumer key (used if not overridden)</source>
-			</trans-unit>
-			<trans-unit id="twitter_consumer_secret">
-				<source>Twitter consumer secret (used if not overridden)</source>
-			</trans-unit>
-			<trans-unit id="twitter_access_token">
-				<source>Twitter access token (used if not overridden)</source>
-			</trans-unit>
-			<trans-unit id="twitter_access_token_secret">
-				<source>Twitter access token secret (used if not overridden)</source>
+			<trans-unit id="bearer_token">
+				<source>Twitter bearer token</source>
 			</trans-unit>
 		</body>
 	</file>

@@ -26,7 +26,7 @@ following example and run 'composer install'.
 
 	{
 		"require": {
-			"typo3/cms-core": "^10.0",
+			"typo3/cms-core": "^11.0",
 			"evoweb/ew-socialfeedwall": "*",
 		}
 	}
